@@ -51,3 +51,7 @@ Use restrained gradients and subtle dimensional lighting. Avoid stock-image slid
 If character silhouettes fail preview inspection, repair the source *before* any full video render.
 
 **For any new work or visual repair, get explicit user approval of representative still frames before the first/full re-render**. The user must see the character in the worst side-profile angle and all full headlines, especially around frame edges.
+
+## Required visual storytelling and object-quality gate
+
+**Read `docs/VISUAL_STORYTELLING_QA.md` before producing every new episode.** Every hand, vehicle, animal, object, and scientific mechanism must look natural and physically plausible, not merely aesthetically consistent. One clear, beautifully executed animation that demonstrates the mechanism beats several mediocre filler shots. Visual fidelity in the video must fulfill expectations set by the thumbnail. Review risky stills (including hands, moving mechanisms, cars) before any full export; obtain user approval.
