@@ -1,0 +1,53 @@
+You can fold a shirt in seconds. For a robot, that can be a nightmare.
+
+And that's strange.
+
+Because modern AI can already solve problems that once looked impossibly hard.
+
+It can write code, pass difficult exams, and help scientists analyze huge amounts of information.
+
+So why does a household chore like folding laundry still give robots such a hard time?
+
+The answer is simple.
+
+A T-shirt is much harder than it looks.
+
+When you pick up a shirt, your brain instantly understands its shape, its weight, how it bends, how it drapes, and where your hands should move next.
+
+You barely think about it.
+
+But for a robot, almost every part of that is difficult.
+
+First, it has to see the shirt clearly.
+
+But cloth doesn't stay still.
+
+It wrinkles, folds, hides its own edges, and changes shape every time the robot touches it.
+
+Then the robot has to predict what will happen next.
+
+If it pulls here, will the sleeve flip over?
+
+Will the fabric bunch up?
+
+Will the whole shirt slide away?
+
+And then comes control.
+
+A tiny mistake in grip, angle, or force can ruin the whole motion.
+
+That's the real challenge.
+
+A math problem stays the same while you solve it.
+
+A shirt changes every second.
+
+So even though AI is becoming incredibly good at reasoning, the physical world is still messy, unpredictable, and full of hidden complexity.
+
+That's why robots may beat you at chess, calculations, or pattern recognition…
+
+but still struggle with your laundry.
+
+And that's also why the future of robotics isn't just about making smarter AI.
+
+It's about building machines that can truly understand and handle the chaos of the real world.
