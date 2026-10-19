@@ -1,6 +1,6 @@
 # Claude Code Task — CurioVector Episode 006 (Robots & Laundry)
 
-**WORK ONLY IN GIT BRANCH `episode/006-robot-laundry`.** Check via `git branch --show-current` before writing. If not the correct branch, STOP and ask the user to switch. NEVER write to the NASA episode, main or another branch. Work can run concurrently with episode 005.
+**TARGET BASE BRANCH: `episode/006-robot-laundry`.** Verify repository `Truedady/curiovector-studio` and that your task started from the target branch. Claude Cloud may create an auto-generated working branch based on it; that is acceptable. If the task base is unknown or incorrect, STOP and ask the user to select it. NEVER write to the NASA episode, main or unrelated branches. Work can run concurrently with episode 005.
 
 ## Files
 
