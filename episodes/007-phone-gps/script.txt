@@ -1,0 +1,43 @@
+Your phone can find you without internet. But the satellites aren't tracking you.
+
+Imagine you're hiking somewhere remote. No cell service. No Wi-Fi. Yet your phone can still calculate where you are, even if the map itself won't load.
+
+So how does it know?
+
+You might imagine a satellite looking down, spotting your phone, and sending back your location.
+
+But that's not how GPS works.
+
+The satellites don't know you exist.
+
+They simply broadcast their own position and the exact time.
+
+And your phone listens.
+
+Here's the clever part.
+
+Those radio signals travel at the speed of light. By measuring how long each one took to arrive, your phone can estimate its distance from that satellite.
+
+One distance isn't enough. You could be anywhere on an enormous sphere.
+
+A second satellite narrows the possibilities.
+
+A third narrows them further.
+
+But your phone has a problem: its clock isn't nearly as accurate as the atomic clocks in space.
+
+So signals from at least four satellites normally let the receiver solve two mysteries at once: where it is, and how far its own clock is off.
+
+And there's one more twist.
+
+Because those satellites move so fast, so high above Earth, even Einstein's theory of relativity matters. Engineers correct for its effects to keep GPS accurate.
+
+Of course, GPS works best with a clear view of the sky.
+
+But next time you see that tiny blue dot, remember:
+
+No satellite had to find you.
+
+Your phone found itself.
+
+By listening to clocks in space.
