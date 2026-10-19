@@ -3,6 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p out/stills
+./scripts/sync-audio.sh
 npx remotion bundle src/index.ts --out-dir out/bundle >/dev/null
 [ $# -eq 0 ] && set -- 1.2 62.5 120
 for sec in "$@"; do

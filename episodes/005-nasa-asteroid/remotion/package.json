@@ -2,13 +2,14 @@
   "name": "curiovector-005-nasa-asteroid",
   "private": true,
   "version": "1.0.0",
-  "description": "CurioVector Episode 005 — NASA DART asteroid impact (self-contained Remotion app)",
+  "description": "CurioVector Episode 005 \u2014 NASA DART asteroid impact (self-contained Remotion app)",
   "scripts": {
-    "studio": "remotion studio src/index.ts",
+    "studio": "./scripts/sync-audio.sh && remotion studio src/index.ts",
     "typecheck": "tsc --noEmit",
     "stills": "./scripts/stills.sh",
-    "render:landscape": "remotion render src/index.ts CurioVectorNASA005Landscape out/CurioVector_NASA_Asteroid_16x9.mp4",
-    "render:shorts": "remotion render src/index.ts CurioVectorNASA005Shorts out/CurioVector_NASA_Asteroid_9x16.mp4"
+    "render:landscape": "./scripts/sync-audio.sh && remotion render src/index.ts CurioVectorNASA005Landscape out/CurioVector_NASA_Asteroid_16x9.mp4",
+    "render:shorts": "./scripts/sync-audio.sh && remotion render src/index.ts CurioVectorNASA005Shorts out/CurioVector_NASA_Asteroid_9x16.mp4",
+    "sync-audio": "./scripts/sync-audio.sh"
   },
   "dependencies": {
     "@fontsource/inter": "5.1.0",
