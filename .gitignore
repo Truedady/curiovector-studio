@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+out/
+.tmp/
+.cache/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+*.mp4
+*.mov
+*.wav
+*.webm
