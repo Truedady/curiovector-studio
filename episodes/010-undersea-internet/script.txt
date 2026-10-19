@@ -1,0 +1,47 @@
+That message you sent overseas probably traveled underwater. Not through space.
+
+Seriously.
+
+When you open a video, it feels like the internet is floating invisibly around you.
+
+Wi-Fi. Cell towers. Satellites.
+
+So it's easy to imagine your data flying across the planet through the sky.
+
+But zoom out.
+
+Your phone sends a wireless signal to a router or cell tower.
+
+And after that short hop, the journey becomes much more physical.
+
+Your data races through networks of fiber-optic cables.
+
+And if it needs to cross an ocean, it's likely to travel along the seafloor.
+
+Inside those cables are incredibly thin strands of glass.
+
+Equipment sends rapidly changing patterns of light through them, carrying digital information across enormous distances.
+
+The surprising part? Much of an undersea cable isn't a giant steel pipe.
+
+In deep water, it can be roughly as thick as a garden hose, with protective layers wrapped around tiny glass fibers.
+
+And there are hundreds of these cable systems linking continents.
+
+Why not just use satellites?
+
+Satellites are vital for some places and services. But undersea fiber can carry extraordinary amounts of data at a much lower cost per bit.
+
+Now here's the vulnerable part.
+
+These cables can break.
+
+Fishing equipment, ship anchors, and natural hazards can damage them.
+
+When that happens, networks often reroute data through other connections. But places with few alternatives may suffer major outages.
+
+So the internet isn't some weightless cloud.
+
+It has a physical skeleton.
+
+And a remarkable amount of our digital world depends on thin threads of glass resting on the ocean floor.
