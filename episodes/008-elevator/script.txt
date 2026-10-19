@@ -1,0 +1,45 @@
+An elevator cable snaps. What stops the car from falling?
+
+The answer isn't a giant cushion at the bottom.
+
+It's a hidden machine that's been protecting elevators for more than 170 years.
+
+First, here's something most people don't realize.
+
+A modern traction elevator usually hangs from several steel ropes, not just one. They're designed with safety margins, so one damaged rope doesn't automatically mean a free fall.
+
+But what if something goes seriously wrong, and the car starts moving too fast?
+
+That's where a second system takes over.
+
+Hidden above the shaft is a device called an overspeed governor.
+
+Think of it as a mechanical speed detector.
+
+A separate rope moves with the elevator, spinning a wheel inside the governor.
+
+At normal speeds, nothing happens.
+
+But if the car accelerates past a dangerous limit, the governor trips and grabs that rope.
+
+This activates safety brakes attached to the elevator car.
+
+They grip the guide rails running along the shaft, bringing the car to a stop.
+
+And the clever part? The emergency mechanism can work mechanically, without needing the building's electricity to tell it what to do.
+
+There are other layers of protection, too, including machine brakes that engage when power is lost.
+
+Now here's the part that sounds made up.
+
+In 1854, an inventor named Elisha Otis stood on an elevated platform in front of a crowd and had its supporting rope cut.
+
+The platform dropped just a little.
+
+Then his safety mechanism caught it.
+
+That demonstration helped make passenger elevators practical.
+
+So the real secret of the skyscraper isn't just how we lift people hundreds of feet.
+
+It's how we stop them safely.
