@@ -1,0 +1,47 @@
+Your headphones make noise to create silence.
+
+Sounds backwards, right?
+
+Imagine you're on a plane. The engines are humming. Then you switch on noise cancellation.
+
+Suddenly, that low roar fades.
+
+But your headphones haven't built a soundproof wall around your head.
+
+They're fighting sound with sound.
+
+Here's how.
+
+Tiny microphones listen to the noise around you, sometimes from both outside and inside the earcup.
+
+A processor analyzes that sound and calculates another waveform.
+
+The key is timing.
+
+Picture a sound wave pushing the air pressure up and down.
+
+Now imagine another wave that does the opposite: when the first pushes up, the second pulls down.
+
+At your ear, those pressure changes can partly cancel each other out.
+
+That's called destructive interference.
+
+The outside noise hasn't vanished from the airplane cabin.
+
+But there's less of it reaching your eardrum.
+
+And this is where things get interesting.
+
+The system has to measure the noise, predict the right opposing signal, and play it at exactly the right moment.
+
+That's much easier when the sound is steady, like an engine or an air conditioner.
+
+It's harder with sudden voices, sharp clicks, and unpredictable noises.
+
+That's also why the padding and seal of your headphones still matter. They physically block some sounds that active cancellation doesn't remove well.
+
+So when you switch on noise cancellation, you're not really turning sound off.
+
+You're turning another sound on.
+
+One carefully designed to make the first one quieter.
