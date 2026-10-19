@@ -13,3 +13,5 @@ out/
 *.mov
 *.wav
 *.webm
+# Per-episode extracted audio copied from the single source archive
+episodes/*/voiceover.mp3
