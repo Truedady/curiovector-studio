@@ -26,3 +26,12 @@ Prior episodes took nearly two hours instead of ~15 minutes because CPU-only Cla
 6. Benchmark rendering at both resolutions and report FPS + estimate.
 7. Render landscape MP4 once, Shorts once.
 8. Verify videos and preserve/download artifacts without claiming they were committed to GitHub if they weren't.
+
+## Mandatory pre-render visual approval (cost gate)
+
+Before any full-length MP4 export, especially an iteration that fixes human illustrations or typography:
+- Show still-frame previews for the worst anatomical pose, most crowded title, main hook and ending (both aspect ratios as relevant).
+- Confirm that no important word is clipped, that mobile text fits within safe areas, and that the human silhouette passes `docs/CURIOVECTOR_CHARACTERS.md`.
+- **Stop and ask for explicit approval**, rather than rendering a full movie automatically. Never treat Claude's self-review as the user's approval.
+- Fix source components and render short stills only; leave successful MP4s and existing audio intact until approved.
+- Make one full re-render per affected format only after approval. Investigate and report repeated calls, large dependency reinstalls and costly retry loops.
