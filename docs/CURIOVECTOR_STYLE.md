@@ -44,3 +44,10 @@ Use restrained gradients and subtle dimensional lighting. Avoid stock-image slid
 - Record source links and verification notes in each episode brief.
 
 **This guide is the single source of truth for new CurioVector episodes.**
+
+## Mandatory character anatomy and still-frame approval
+
+**Read `docs/CURIOVECTOR_CHARACTERS.md` for EVERY scene with an illustrated person.** The character quality standard is a hard requirement: anatomically plausible stylized heads, jaws, chins, necks, ears and face profiles; no oversized spherical "blob" or toy-like human faces. Create consistent reference views and reuse shapes instead of redrawing faces independently. 
+If character silhouettes fail preview inspection, repair the source *before* any full video render.
+
+**For any new work or visual repair, get explicit user approval of representative still frames before the first/full re-render**. The user must see the character in the worst side-profile angle and all full headlines, especially around frame edges.
