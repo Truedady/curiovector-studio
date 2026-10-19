@@ -1,6 +1,6 @@
 # Claude Code Task — CurioVector Episode 005 (NASA DART)
 
-**WORK ONLY IN GIT BRANCH `episode/005-nasa-asteroid`.** Check the actual current branch via `git branch --show-current` BEFORE writing; if it is not this branch, STOP and request the user to select the correct branch. Never modify or merge into main or the robot episode branch. Do not start any other episode.
+**TARGET BASE BRANCH: `episode/005-nasa-asteroid`.** Verify repository `Truedady/curiovector-studio` and that your task started from the target branch. Claude Cloud may create an auto-generated working branch based on the selected branch; that is acceptable. If the task base is unknown or incorrect, STOP and ask the user to select it. Never modify or merge into main or the robot episode. Do not start any other episode.
 
 ## Files
 
