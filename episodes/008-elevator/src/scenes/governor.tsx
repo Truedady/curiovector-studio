@@ -245,7 +245,7 @@ export const SafetyScene: React.FC<SceneProps> = ({t, layout}) => {
 						: null}
 					{stopped ? [-1, 1].map((k) => <SvgGlow key={k} x={cx + k * 200 * s} y={gearY} r={120} color="orange" opacity={0.55} />) : null}
 				</g>
-				<SvgLabel t={t} at={S.activates + 0.3} out={S.cleverPart} from={[rx, L ? 140 : 300]} to={[rx - 40, L ? 90 : 250]} text="Rope held" color={C.orange} anchor="end" size={26} />
+				<SvgLabel t={t} at={S.activates + 0.3} out={S.cleverPart} from={[rx, L ? 140 : 445]} to={[rx - 40, L ? 90 : 430]} text="Rope held" color={C.orange} anchor="end" size={26} />
 				<SvgLabel t={t} at={BRAKE0} from={[cx - 200 * s, gearY + 10]} to={L ? [200, gearY + 150] : [180, gearY + 130]} text="Safety gear" color={C.orange} anchor="middle" size={L ? 28 : 28} />
 				<SvgLabel t={t} at={S.gripRails + 0.2} from={[cx + 200 * s, gearY + 120]} to={L ? [cx + 360, gearY + 200] : [860, gearY + 130]} text="Guide rail" color={C.cyan} anchor="middle" size={L ? 28 : 28} />
 				{pa > 0 ? (
