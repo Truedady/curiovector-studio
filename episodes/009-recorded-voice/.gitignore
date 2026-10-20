@@ -1,0 +1,6 @@
+# Episode-local ignores (root .gitignore already covers node_modules, *.mp4, voiceover.mp3)
+public/voiceover.mp3
+out/
+stills/
+bench/
+.tmp-bundle/
