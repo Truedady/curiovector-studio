@@ -1,0 +1,28 @@
+{
+  "name": "curiovector-e010-undersea-internet",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CurioVector episode 010 — The Internet Is Hiding at the Bottom of the Ocean (episode-local Remotion project)",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "render:landscape": "remotion render src/index.ts CV010InternetLandscape out/CurioVector_E10_Undersea_Internet_16x9.mp4",
+    "render:shorts": "remotion render src/index.ts CV010InternetShorts out/CurioVector_E10_Undersea_Internet_9x16.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.537",
+    "d3-geo": "3.1.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.537",
+    "topojson-client": "3.1.0",
+    "world-atlas": "2.0.2"
+  },
+  "devDependencies": {
+    "@types/d3-geo": "3.1.0",
+    "@types/geojson": "7946.0.16",
+    "@types/react": "19.1.8",
+    "@types/topojson-client": "3.1.5",
+    "typescript": "5.8.3"
+  }
+}

@@ -1,0 +1,5 @@
+node_modules/
+out/
+benchmark/
+*.mp4
+voiceover.mp3
