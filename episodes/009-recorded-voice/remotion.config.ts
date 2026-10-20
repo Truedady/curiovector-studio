@@ -4,7 +4,7 @@ import {Config} from '@remotion/cli/config';
 Config.setVideoImageFormat('jpeg');
 Config.setJpegQuality(92);
 Config.setConcurrency(4);
-Config.setChromiumOpenGlRenderer('swangle');
+Config.setChromiumOpenGlRenderer('angle'); // benchmarked ~4x faster than swangle on this CPU container
 
 // Cloud containers ship a pre-installed headless Chromium; use it when present
 // instead of downloading one (remotion.media is not reachable from the sandbox).
