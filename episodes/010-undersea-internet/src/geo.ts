@@ -58,5 +58,5 @@ export const HUBS: LL[] = [
   [151.2, -33.9], [-71.6, -33], [-123.8, 45.3], [-43.2, -23], [121, 14.6],
 ];
 
-/** Dense great-circle sampling so routes curve on any projection. */
+/** d3-geo draws each leg as a great-circle arc on whatever projection is used. */
 export const routeLine = (r: LL[]): LineString => ({type: 'LineString', coordinates: r});

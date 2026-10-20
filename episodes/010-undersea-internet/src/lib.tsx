@@ -204,8 +204,9 @@ export const GlobalDefs: React.FC = () => (
         <stop offset="1" stopColor="#020617" stopOpacity={0.75} />
       </radialGradient>
       <radialGradient id="g-section" cx="0.4" cy="0.35" r="0.7">
-        <stop offset="0" stopColor="#3B4D72" />
-        <stop offset="1" stopColor="#0D1530" />
+        <stop offset="0" stopColor="#56698F" />
+        <stop offset="0.6" stopColor="#2A3A60" />
+        <stop offset="1" stopColor="#18233F" />
       </radialGradient>
       <linearGradient id="g-shadeTop" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stopColor="#040A1C" stopOpacity={0.85} />

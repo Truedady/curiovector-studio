@@ -7,6 +7,9 @@ import {Invisible} from './scenes/S02Invisible';
 import {PhysicalPath} from './scenes/S03Path';
 import {Seafloor} from './scenes/S04Seafloor';
 import {Fiber} from './scenes/S05Fiber';
+import {Anatomy} from './scenes/S06Anatomy';
+import {Network} from './scenes/S07Network';
+import {SatVsFiber} from './scenes/S08Satellites';
 
 // One timeline, two native layouts: `tall` switches every scene's art direction.
 export const Episode: React.FC<{tall: boolean}> = ({tall}) => {
@@ -29,6 +32,15 @@ export const Episode: React.FC<{tall: boolean}> = ({tall}) => {
         </Scene>
         <Scene a={SCENES.fiber[0]} b={SCENES.fiber[1]}>
           {(t) => <Fiber t={t} />}
+        </Scene>
+        <Scene a={SCENES.anatomy[0]} b={SCENES.anatomy[1]}>
+          {(t) => <Anatomy t={t} />}
+        </Scene>
+        <Scene a={SCENES.network[0]} b={SCENES.network[1]}>
+          {(t) => <Network t={t} />}
+        </Scene>
+        <Scene a={SCENES.satellites[0]} b={SCENES.satellites[1]}>
+          {(t) => <SatVsFiber t={t} />}
         </Scene>
         <Audio src={staticFile('voiceover.mp3')} />
       </AbsoluteFill>
