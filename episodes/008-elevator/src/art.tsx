@@ -363,7 +363,7 @@ export const Shaft: React.FC<{
 						<rect
 							key={i}
 							x={x + w * p}
-							y={y1 + ((i * 337 + scroll * 1.7) % (y2 - y1))}
+							y={y1 + ((((i * 337 + scroll * 1.7) % (y2 - y1)) + (y2 - y1)) % (y2 - y1))}
 							width={3}
 							height={220}
 							fill={C.cyan}
@@ -393,7 +393,7 @@ export const SafetyDetail: React.FC<{id: string; x: number; y: number; s?: numbe
 			{/* rail blade (moves past while sliding) */}
 			<rect x={-22} y={-250} width={44} height={500} fill={`url(#${id}-rail)`} />
 			{[0, 1, 2, 3, 4, 5, 6].map((i) => (
-				<line key={i} x1={-22} x2={22} y1={-250 + ((i * 80 + slide) % 500)} y2={-250 + ((i * 80 + slide) % 500)} stroke="#5B79A8" strokeWidth={2} />
+				<line key={i} x1={-22} x2={22} y1={-250 + ((((i * 80 + slide) % 500) + 500) % 500)} y2={-250 + ((((i * 80 + slide) % 500) + 500) % 500)} stroke="#5B79A8" strokeWidth={2} />
 			))}
 			{/* tapered housing (narrow at top) */}
 			<path d="M -150 -130 L -60 -130 L -92 140 L -170 140 Z" fill="#1F3664" stroke="#8EA5CC" strokeWidth={4} />
