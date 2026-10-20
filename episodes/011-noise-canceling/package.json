@@ -1,0 +1,22 @@
+{
+  "name": "curiovector-e011-noise-canceling",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CurioVector Episode 011 — Your Headphones Make Noise to Create Silence (episode-local Remotion project)",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "render:landscape": "remotion render src/index.ts CV011ANC-Landscape out/CurioVector_E11_Noise_Canceling_16x9.mp4",
+    "render:shorts": "remotion render src/index.ts CV011ANC-Shorts out/CurioVector_E11_Noise_Canceling_9x16.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.530",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.530"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "typescript": "5.8.3"
+  }
+}

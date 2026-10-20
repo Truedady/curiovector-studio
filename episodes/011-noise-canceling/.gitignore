@@ -1,0 +1,5 @@
+node_modules/
+out/
+stills/
+# hard link to the git-ignored extracted voiceover
+public/voiceover.mp3
