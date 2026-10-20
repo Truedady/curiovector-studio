@@ -5,6 +5,8 @@ import {SCENES} from './timing';
 import {Hook} from './scenes/S01Hook';
 import {Invisible} from './scenes/S02Invisible';
 import {PhysicalPath} from './scenes/S03Path';
+import {Seafloor} from './scenes/S04Seafloor';
+import {Fiber} from './scenes/S05Fiber';
 
 // One timeline, two native layouts: `tall` switches every scene's art direction.
 export const Episode: React.FC<{tall: boolean}> = ({tall}) => {
@@ -21,6 +23,12 @@ export const Episode: React.FC<{tall: boolean}> = ({tall}) => {
         </Scene>
         <Scene a={SCENES.firstHop[0]} b={SCENES.firstHop[1]}>
           {(t) => <PhysicalPath t={t} />}
+        </Scene>
+        <Scene a={SCENES.seafloor[0]} b={SCENES.seafloor[1]}>
+          {(t) => <Seafloor t={t} />}
+        </Scene>
+        <Scene a={SCENES.fiber[0]} b={SCENES.fiber[1]}>
+          {(t) => <Fiber t={t} />}
         </Scene>
         <Audio src={staticFile('voiceover.mp3')} />
       </AbsoluteFill>

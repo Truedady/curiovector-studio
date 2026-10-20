@@ -34,15 +34,15 @@ const Vault: React.FC<{x: number; y: number; w: number; h: number; label: string
 export const PhysicalPath: React.FC<{t: number}> = ({t}) => {
   const {w: W, h: H, tall} = useLay();
   const gY = tall ? 1000 : 720;
-  const phone: P = tall ? [190, 880] : [230, 600];
-  const house: P = tall ? [440, gY] : [470, gY];
-  const tower: P = tall ? [820, gY] : [740, gY];
+  const phone: P = tall ? [190, 880] : [330, 590];
+  const house: P = tall ? [440, gY] : [540, gY];
+  const tower: P = tall ? [820, gY] : [770, gY];
 
   // camera: from a close-up on the phone to the whole landscape
   const zk = ramp(t, T.zoomOut + 0.1, T.zoomOut + 1.5, EASE_IN_OUT);
-  const z = lerp(tall ? 2.3 : 2.6, 1, zk);
-  const fx = lerp(phone[0], W / 2, zk);
-  const fy = lerp(phone[1], H / 2, zk);
+  const z = lerp(tall ? 2.3 : 2.6, tall ? 1 : 1.25, zk);
+  const fx = lerp(phone[0], tall ? W / 2 : 1010, zk);
+  const fy = lerp(phone[1], tall ? H / 2 : 610, zk);
   const cam = `translate(${W / 2} ${H / 2}) scale(${z}) translate(${-fx} ${-fy})`;
 
   const hop = ramp(t, T.firstHop, T.firstHop + 0.6);
@@ -64,8 +64,8 @@ export const PhysicalPath: React.FC<{t: number}> = ({t}) => {
       [[1060, tY], [1060, 1000], [1560, 1000], [1560, tY]],
       [[1250, tY], [1250, gY]],
       [[1520, tY], [1520, gY]],
-      [[820, tY], [820, 1010], [600, 1010], [600, gY]],
-      [[600, 1010], [140, 1010], [140, gY]],
+      [[840, tY], [840, 960], [650, 960], [650, gY]],
+      [[650, 960], [300, 960], [300, gY]],
     ];
     hubs = [];
   } else {
@@ -137,14 +137,14 @@ export const PhysicalPath: React.FC<{t: number}> = ({t}) => {
           {/* labels */}
           <Tag
             x={tall ? 480 : (phone[0] + tower[0]) / 2 + 40}
-            y={tall ? 640 : 330}
+            y={tall ? 640 : 455}
             text="SHORT WIRELESS HOP"
             size={tall ? 34 : 28}
             o={ramp(t, T.firstHop + 0.4, T.firstHop + 0.9) * (1 - ramp(t, T.fiberNet, T.fiberNet + 0.4))}
           />
           <Tag
             x={tall ? 540 : 1060}
-            y={tall ? 1855 : 1060}
+            y={tall ? 1855 : 1000}
             text={tall ? 'FIBER-OPTIC NETWORKS' : 'FIBER-OPTIC NETWORKS UNDER STREETS'}
             size={tall ? 34 : 28}
             o={ramp(t, T.fiberNet + 0.8, T.fiberNet + 1.3)}
@@ -153,7 +153,7 @@ export const PhysicalPath: React.FC<{t: number}> = ({t}) => {
             <>
               <Tag x={1080} y={gY - 150} text="NETWORK HUB" size={22} o={ramp(t, T.physical + 0.8, T.physical + 1.3)} />
               <Tag x={1420} y={gY - 190} text="DATA CENTER" size={22} o={ramp(t, T.physical + 1.4, T.physical + 1.9)} />
-              <Tag x={1720} y={gY - 120} text="TO THE SEA →" size={22} color={C.orange} o={ramp(t, T.physical + 2, T.physical + 2.5)} />
+              <Tag x={1655} y={gY - 120} text="TO THE SEA →" size={22} color={C.orange} o={ramp(t, T.physical + 2, T.physical + 2.5)} />
             </>
           )}
           {tall && <Tag x={540} y={1760} text="↓ ONWARD TO THE COAST" size={30} color={C.orange} o={ramp(t, T.physical + 2.2, T.physical + 2.7) * (1 - ramp(t, T.fiberNet + 0.6, T.fiberNet + 1))} />}
