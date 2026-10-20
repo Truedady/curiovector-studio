@@ -61,6 +61,7 @@ def starfield(name, w, h, n):
     base = base * (1.05 - 0.45 * yy) + np.asarray(neb, np.float32) * 0.55
     img = Image.fromarray(np.clip(base, 0, 255).astype(np.uint8))
     d = ImageDraw.Draw(img)
+    stars_layer = img
     for _ in range(n):
         x, y = random.random() * w, random.random() * h
         m = random.random() ** 3
@@ -68,6 +69,13 @@ def starfield(name, w, h, n):
         b = int(120 + 135 * m)
         tint = random.choice([(b, b, b), (b - 30, b - 5, b), (b, b - 20, b - 50)])
         d.ellipse([x - r, y - r, x + r, y + r], fill=tuple(max(0, t) for t in tint))
+    # Bake the edge vignette here instead of compositing a full-frame overlay per frame.
+    yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+    nx, ny = (xx / w - 0.5) * 2, (yy / h - 0.5) * 2
+    v = np.clip((np.sqrt(nx ** 2 * 0.8 + ny ** 2 * 0.8) - 0.55) / 0.85, 0, 1) ** 1.6 * 0.7
+    arr = np.asarray(img, np.float32)
+    arr = arr * (1 - v[..., None]) + np.array([3, 8, 22], np.float32) * v[..., None]
+    img = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
     save(img, name)
 
 
@@ -113,10 +121,8 @@ glow("glow_white.png", WHITE, power=3.0)
 glow("glow_blue.png", BLUE, power=1.8, core=0.18)
 starfield("stars_wide.png", 2400, 1350, 1100)
 starfield("stars_tall.png", 1350, 2400, 1100)
-vignette("vignette_wide.png", 960, 540)
-vignette("vignette_tall.png", 540, 960)
 earth_atmo("earth_atmo.png")
-light_beam("beam_cyan.png")
+
 
 
 def octave_noise(w, h, octaves, seed):

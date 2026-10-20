@@ -7,7 +7,7 @@ import path from 'node:path';
 const [id, outDir, list, scale = '1'] = process.argv.slice(2);
 const serveUrl = await bundle({entryPoint: path.resolve('src/index.ts')});
 const browserExecutable = process.env.CV_BROWSER ?? null;
-const puppeteerInstance = await openBrowser('chrome', {browserExecutable, chromiumOptions: {gl: 'swangle'}});
+const puppeteerInstance = await openBrowser('chrome', {browserExecutable, chromiumOptions: {gl: 'angle'}});
 const composition = await selectComposition({serveUrl, id, puppeteerInstance, browserExecutable});
 for (const s of list.split(',')) {
   const frame = Math.min(composition.durationInFrames - 1, Math.round(Number(s) * composition.fps));

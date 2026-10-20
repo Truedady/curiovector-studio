@@ -8,10 +8,10 @@ import {CUE} from '../timing';
 export const Finale: React.FC<{t: number}> = ({t}) => {
   const L = useL();
   const cx = L.W / 2;
-  const cy = pick(L, 560, 820);
+  const cy = pick(L, 560, 860);
 
   // Phone geometry: we push into the blue dot on its screen.
-  const w = pick(L, 330, 420);
+  const w = pick(L, 330, 380);
   const h = w * 2.08;
   const bez = w * 0.045;
   const dotOffX = 0; // dot is horizontally centred on the screen
@@ -22,7 +22,7 @@ export const Finale: React.FC<{t: number}> = ({t}) => {
   const push = map(t, [CUE.noSatellite - 0.8, CUE.noSatellite + 1.0], [1, 5.5], EASE_IO);
   const phoneO = 1 - rise(t, CUE.noSatellite + 0.2, 0.7);
   const dotO = rise(t, CUE.noSatellite + 0.3, 0.6);
-  const sats = rise(t, CUE.noSatellite + 0.5, 0.8) * (1 - rise(t, CUE.clocksInSpace, 0.8) * 0.6);
+  const sats = rise(t, CUE.noSatellite + 0.5, 0.8) * (1 - rise(t, CUE.foundItself, 0.8) * 0.55);
   const conv = rise(t, CUE.foundItself, 1.6);
   const clocks = rise(t, CUE.clocksInSpace + 0.1, 0.8);
   const breathe = 1 + 0.06 * Math.sin(t * 2.6);
@@ -30,7 +30,7 @@ export const Finale: React.FC<{t: number}> = ({t}) => {
   const ringR = pick(L, 430, 400);
   const satPos = [0, 1, 2, 3, 4].map((i) => {
     const a = ((-90 + i * 72 + (t - 90) * 4) * Math.PI) / 180;
-    return {x: cx + Math.cos(a) * ringR * pick(L, 1.75, 1.15), y: cy + Math.sin(a) * ringR * pick(L, 0.95, 1.25)};
+    return {x: cx + Math.cos(a) * ringR * pick(L, 1.75, 1.15), y: cy + Math.sin(a) * ringR * pick(L, 0.8, 1.25)};
   });
 
   return (
@@ -42,7 +42,7 @@ export const Finale: React.FC<{t: number}> = ({t}) => {
             x={phoneX}
             y={phoneY}
             w={w}
-            s={{noService: 1, mapFail: 1, coords: 0, dot: 1, pulse: t}}
+            s={{noService: 1, mapFail: 0, coords: 0, dot: 1, pulse: t}}
             glow={0.8}
           />
         </div>

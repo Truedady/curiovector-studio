@@ -9,7 +9,8 @@ Config.setPixelFormat('yuv420p');
 Config.setAudioCodec('aac');
 Config.setOverwriteOutput(true);
 Config.setConcurrency(4);
-Config.setChromiumOpenGlRenderer('swangle');
+// 'angle' measured ~25x faster than 'swangle' on this CPU-only container.
+Config.setChromiumOpenGlRenderer('angle');
 if (process.env.CV_BROWSER) {
   Config.setBrowserExecutable(process.env.CV_BROWSER);
 }

@@ -50,8 +50,8 @@ export const Relativity: React.FC<{t: number}> = ({t}) => {
   const P = L.P;
   const earth = pick(L, {cx: 300, cy: 1300, r: 760}, {cx: 540, cy: 2350, r: 950});
   const orbitR = pick(L, 1250, 1600);
-  const a0 = pick(L, 27, -14);
-  const a1 = pick(L, 47, 6);
+  const a0 = pick(L, 27, -8);
+  const a1 = pick(L, 47, 8);
   const ang = (map(t, [70.5, 83.2], [a0, a1], (x) => x) * Math.PI) / 180;
   const sat = {x: earth.cx + Math.sin(ang) * orbitR, y: earth.cy - Math.cos(ang) * orbitR};
   const surf = {x: earth.cx + Math.sin(ang) * earth.r, y: earth.cy - Math.cos(ang) * earth.r};
@@ -96,8 +96,8 @@ export const Relativity: React.FC<{t: number}> = ({t}) => {
         </g>
       </Svg>
       <Satellite id="rel" t={t} x={sat.x} y={sat.y} scale={pick(L, 0.75, 0.72)} rot={(ang * 180) / Math.PI} glow={0.7} />
-      <Tag t={t} at={CUE.fast + 0.4} out={P ? CUE.einstein + 0.5 : 1e9} x={lerp(surf.x, sat.x, 0.45) + pick(L, 30, 34)} y={lerp(surf.y, sat.y, 0.45)} text="≈ 20,200 km up" color={C.orange} size={pick(L, 26, 28)} anchor="left" />
-      <Tag t={t} at={CUE.fast + 1.2} x={sat.x} y={sat.y + pick(L, 110, -100)} text="≈ 14,000 km/h" color={C.cyan} size={pick(L, 26, 28)} />
+      <Tag t={t} at={CUE.fast + 0.4} out={P ? CUE.einstein + 0.5 : CUE.correct + 0.3} x={lerp(surf.x, sat.x, 0.45) + pick(L, 30, 34)} y={lerp(surf.y, sat.y, 0.45)} text="≈ 20,200 km up" color={C.orange} size={pick(L, 26, 28)} anchor="left" />
+      <Tag t={t} at={CUE.fast + 1.2} out={CUE.correct + 0.3} x={sat.x} y={sat.y + pick(L, 110, -100)} text="≈ 14,000 km/h" color={C.cyan} size={pick(L, 26, 28)} />
 
       <Card t={t} at={CUE.einstein + 0.5} x={card.x} y={card.y} w={card.w} color={C.cyan} title="SPECIAL RELATIVITY" body="Moving fast → its clock ticks a little *slower*" />
       <Card t={t} at={CUE.einstein + 1.3} x={card.x} y={card.y + card.gap} w={card.w} color={C.orange} title="GENERAL RELATIVITY" body="Weaker gravity up high → ticks a little *faster*" />
@@ -115,7 +115,7 @@ export const Relativity: React.FC<{t: number}> = ({t}) => {
               ON THE GROUND
             </text>
             <text x={pair.w * 0.5} y={100} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={fix > 0.5 ? C.cyan : C.orange}>
-              {fix > 0.5 ? 'in sync ✓' : '≠'}
+              {fix > 0.5 ? 'in sync ✓' : 'drifting'}
             </text>
           </svg>
         </div>

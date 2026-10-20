@@ -1,5 +1,6 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Img, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {useEpisodeFonts} from './fonts';
 import {C, LayoutCtx, rise} from './lib';
 import {FPS, SCENES, XFADE} from './timing';
 import {Hook} from './scenes/Hook';
@@ -24,26 +25,6 @@ const ORDER: [keyof typeof SCENES, React.FC<{t: number}>][] = [
   ['finale', Finale],
 ];
 
-// Episode-local font, loaded once before the first frame is captured.
-const FONTS: [string, string][] = [
-  ['500', 'fonts/InterDisplay-Medium.otf'],
-  ['700', 'fonts/InterDisplay-Bold.otf'],
-  ['800', 'fonts/InterDisplay-ExtraBold.otf'],
-];
-let fontsReady: Promise<void> | null = null;
-const loadFonts = () => {
-  if (!fontsReady) {
-    fontsReady = Promise.all(
-      FONTS.map(([weight, file]) =>
-        new FontFace('CV007 Inter Display', `url(${staticFile(file)})`, {weight}).load().then((f) => {
-          document.fonts.add(f);
-        }),
-      ),
-    ).then(() => undefined);
-  }
-  return fontsReady;
-};
-
 export const Episode: React.FC = () => {
   const frame = useCurrentFrame();
   const {width, height} = useVideoConfig();
@@ -51,15 +32,12 @@ export const Episode: React.FC = () => {
   const P = height > width;
   const L = {W: width, H: height, P};
   const last = ORDER.length - 1;
-  const [handle] = React.useState(() => delayRender('CV007 fonts'));
-  React.useEffect(() => {
-    loadFonts().then(() => continueRender(handle), () => continueRender(handle));
-  }, [handle]);
+  useEpisodeFonts();
 
   return (
     <LayoutCtx.Provider value={L}>
       <AbsoluteFill style={{background: C.navy, overflow: 'hidden'}}>
-        {/* pre-rasterized starfield, slow drift */}
+        {/* pre-rasterized starfield with baked vignette, slow drift */}
         <Img
           src={staticFile(P ? 'art/stars_tall.png' : 'art/stars_wide.png')}
           style={{
@@ -84,10 +62,6 @@ export const Episode: React.FC = () => {
             </AbsoluteFill>
           );
         })}
-        <Img
-          src={staticFile(P ? 'art/vignette_tall.png' : 'art/vignette_wide.png')}
-          style={{position: 'absolute', left: 0, top: 0, width, height}}
-        />
         <Audio src={staticFile('voiceover.mp3')} />
       </AbsoluteFill>
     </LayoutCtx.Provider>

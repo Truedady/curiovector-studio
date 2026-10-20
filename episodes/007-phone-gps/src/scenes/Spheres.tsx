@@ -4,16 +4,8 @@ import {geometry} from '../geom';
 import {C, EASE, Earth, Fill, Headline, Svg, Tag, pick, rise, useL} from '../lib';
 import {CUE} from '../timing';
 
-/** Shared defs for range spheres (radial fill = shell look, no filters). */
-export const SphereDefs: React.FC = () => (
-  <defs>
-    <radialGradient id="sph-fill" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0.55" stopColor={C.cyan} stopOpacity="0" />
-      <stop offset="0.93" stopColor={C.cyan} stopOpacity="0.1" />
-      <stop offset="1" stopColor={C.cyan} stopOpacity="0.22" />
-    </radialGradient>
-  </defs>
-);
+/** Kept for call sites; range spheres no longer need gradient defs. */
+export const SphereDefs: React.FC = () => null;
 
 export const RangeCircle: React.FC<{x: number; y: number; r: number; k: number; color?: string; dim?: number}> = ({
   x,
@@ -25,7 +17,10 @@ export const RangeCircle: React.FC<{x: number; y: number; r: number; k: number; 
 }) =>
   k <= 0.001 ? null : (
     <g opacity={dim}>
-      <circle cx={x} cy={y} r={r * k} fill="url(#sph-fill)" />
+      {/* shell glow from layered strokes: only perimeter pixels rasterize (a filled
+          gradient disc of r≈1000 px cost ~45% of frame time) */}
+      <circle cx={x} cy={y} r={r * k - 14} fill="none" stroke={color} strokeWidth={28} opacity={0.07} />
+      <circle cx={x} cy={y} r={r * k - 5} fill="none" stroke={color} strokeWidth={10} opacity={0.12} />
       <circle cx={x} cy={y} r={r * k} fill="none" stroke={color} strokeWidth={3} opacity={0.9} />
     </g>
   );
@@ -48,7 +43,7 @@ export const Spheres: React.FC<{t: number}> = ({t}) => {
   const hx = pick(L, 110, 70);
   const hy = pick(L, 860, 1440);
   const hs = pick(L, 60, 64);
-  const hw = pick(L, 1000, 940);
+  const hw = pick(L, 1400, 940);
 
   return (
     <Fill>
@@ -95,7 +90,7 @@ export const Spheres: React.FC<{t: number}> = ({t}) => {
           glow={0.5}
         />
       ))}
-      <Tag t={t} at={CUE.sphere + 0.3} out={CUE.second + 0.6} x={sats[0].x + pick(L, 280, 220)} y={sats[0].y + pick(L, 520, 560)} text="you're somewhere on here" color={C.cyan} size={pick(L, 26, 28)} anchor="left" />
+      <Tag t={t} at={CUE.sphere + 0.3} out={CUE.second + 0.6} x={p.x + pick(L, -60, 0)} y={p.y - pick(L, 120, 150)} text="you're somewhere on here" color={C.cyan} size={pick(L, 26, 28)} anchor={pick<'left' | 'center' | 'right'>(L, 'right', 'center')} />
       <Tag t={t} at={CUE.second + 1.5} out={CUE.third + 0.9} x={pick(L, ring.cx - 220, ring.cx - 70)} y={pick(L, ring.cy + 240, ring.cy + 380)} text="two spheres → a ring" color={C.orange} size={pick(L, 26, 28)} anchor="right" />
       <Tag t={t} at={CUE.third + 1.2} x={Q.x + 44} y={Q.y} text="or here?" color={C.orange} size={pick(L, 24, 26)} anchor="left" />
       <Tag t={t} at={CUE.third + 1.2} x={p.x + 50} y={p.y - 70} text="here?" color={C.orange} size={pick(L, 24, 26)} anchor="left" />

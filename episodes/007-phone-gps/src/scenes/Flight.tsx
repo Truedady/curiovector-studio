@@ -13,7 +13,7 @@ export const Flight: React.FC<{t: number}> = ({t}) => {
   const P = L.P;
   const earth = pick(L, {cx: 1480, cy: 2080, r: 1270}, {cx: 760, cy: 2700, r: 1260});
   const ph = {x: earth.cx, y: earth.cy - earth.r + 4};
-  const sat = pick(L, {x: 360, y: 250}, {x: 270, y: 600});
+  const sat = pick(L, {x: 360, y: 250}, {x: 240, y: 700});
   const a = {x: sat.x + 10, y: sat.y + 50};
   const b = {x: ph.x, y: ph.y - 60};
 
@@ -29,7 +29,7 @@ export const Flight: React.FC<{t: number}> = ({t}) => {
   const dimLine = rise(t, CUE.distance + 0.4, 0.8);
   const camScale = map(t, [34.62, 44.4], [1.04, 1]);
 
-  const pnl = pick(L, {x: 1170, y: 150, w: 640}, {x: 470, y: 660, w: 560});
+  const pnl = pick(L, {x: 1170, y: 150, w: 640}, {x: 480, y: 430, w: 500});
   const hx = pick(L, 110, 70);
   const hy = pick(L, 820, 190);
   const hs = pick(L, 62, 70);
@@ -48,7 +48,7 @@ export const Flight: React.FC<{t: number}> = ({t}) => {
       <div style={{position: 'absolute', inset: 0, transform: `scale(${camScale})`}}>
         <Earth cx={earth.cx} cy={earth.cy} r={earth.r} />
         <Svg>
-          <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={C.cyan} strokeWidth={2} strokeDasharray="4 12" opacity={0.5} />
+          <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={C.cyan} strokeWidth={3} strokeDasharray="6 12" opacity={0.75} />
           {fast >= 0 && <Pulse ax={a.x} ay={a.y} bx={b.x} by={b.y} k={fast} r={10} />}
           {mk > 0 && !arrived && <Pulse ax={a.x} ay={a.y} bx={b.x} by={b.y} k={mk} r={14} color={C.orange} />}
           {dimLine > 0 && (
@@ -110,7 +110,7 @@ export const Flight: React.FC<{t: number}> = ({t}) => {
       )}
       <Tag t={t} at={CUE.measure + 0.6} out={CUE.distance} x={pick(L, pnl.x + pnl.w - 10, pnl.x + pnl.w - 10)} y={pnl.y - 26} text="slowed way down" color={C.dim} size={20} anchor="right" />
 
-      <Tag t={t} at={CUE.lightSpeed + 0.6} out={CUE.measure + 0.2} x={pick(L, 1050, 600)} y={pick(L, 300, 760)} text="≈ 300,000 km per second" color={C.cyan} size={pick(L, 30, 32)} />
+      <Tag t={t} at={CUE.lightSpeed + 0.6} out={CUE.measure + 0.2} x={pick(L, 1050, 540)} y={pick(L, 300, 900)} text="≈ 300,000 km per second" color={C.cyan} size={pick(L, 30, 32)} />
 
       <Headline t={t} at={CUE.lightSpeed} out={CUE.measure} x={hx} y={hy} size={hs} width={hw} text="Radio signals fly at the *speed of light.*" />
       <Headline t={t} at={CUE.measure} out={CUE.distance} x={hx} y={hy} size={hs} width={hw} text="Measure *how long* each one took…" />

@@ -1,5 +1,6 @@
 import React from 'react';
-import {C, FONT, Glow, rise} from './lib';
+import {Img, staticFile} from 'remotion';
+import {C, FONT, Glow} from './lib';
 
 // ===================================================================================
 // GPS satellite — editorial vector, drawn around (0,0), ~260 px wide at scale 1.
@@ -90,10 +91,53 @@ export type MapState = {
 const SW = 400; // screen design units
 const SH = 840;
 
-const MapScreen: React.FC<{s: MapState}> = ({s}) => {
+// mode 'base'    = static screen art (exported once to PNG, see ArtExport.tsx)
+// mode 'overlay' = the few live parts drawn on top of that PNG every frame
+const MapScreen: React.FC<{s: MapState; mode: 'base' | 'overlay'}> = ({s, mode}) => {
   const dx = 200;
   const dy = 470;
   const p = (s.pulse % 1.6) / 1.6;
+  const orange = s.noService > 0.5;
+  if (mode === 'overlay') {
+    return (
+      <svg width="100%" height="100%" viewBox={`0 0 ${SW} ${SH}`} style={{display: 'block', position: 'absolute', left: 0, top: 0}}>
+        <g opacity={s.dot}>
+          <circle cx={dx} cy={dy} r={74} fill={C.blue} opacity={0.18} />
+          <circle cx={dx} cy={dy} r={20 + p * 64} fill="none" stroke={C.blue} strokeWidth={4} opacity={(1 - p) * 0.8} />
+          <circle cx={dx} cy={dy} r={24} fill={C.white} />
+          <circle cx={dx} cy={dy} r={17} fill={C.blue} />
+        </g>
+        {s.coords > 0.002 && (
+          <g opacity={s.coords} transform={`translate(0, ${(1 - s.coords) * 20})`}>
+            <rect x={24} y={650} width={352} height={150} rx={22} fill="#081330" stroke={C.cyan} strokeWidth={2} />
+            <text x={48} y={694} fontFamily={FONT} fontWeight={700} fontSize={19} letterSpacing="2" fill={C.cyan}>
+              YOUR POSITION
+            </text>
+            <text x={48} y={738} fontFamily={FONT} fontWeight={800} fontSize={31} fill={C.white}>
+              46.5577° N
+            </text>
+            <text x={48} y={778} fontFamily={FONT} fontWeight={800} fontSize={31} fill={C.white}>
+              7.9806° E
+            </text>
+          </g>
+        )}
+        {orange && (
+          <g>
+            <rect x={110} y={30} width={190} height={46} fill="#060E26" />
+            <text x={238} y={60} textAnchor="end" fontFamily={FONT} fontWeight={700} fontSize={22} fill={C.orange}>
+              No Service
+            </text>
+            <g transform="translate(272,64)" stroke={C.orange} strokeWidth={4} fill="none" strokeLinecap="round">
+              <path d="M -18 -18 Q 0 -32 18 -18" />
+              <path d="M -11 -10 Q 0 -19 11 -10" />
+              <circle cx={0} cy={-2} r={2} fill={C.orange} />
+              <line x1={-20} y1={-30} x2={18} y2={4} />
+            </g>
+          </g>
+        )}
+      </svg>
+    );
+  }
   return (
     <svg width="100%" height="100%" viewBox={`0 0 ${SW} ${SH}`} style={{display: 'block'}}>
       <defs>
@@ -146,32 +190,12 @@ const MapScreen: React.FC<{s: MapState}> = ({s}) => {
           </text>
         </g>
       )}
-      {/* blue dot */}
-      <g opacity={s.dot}>
-        <circle cx={dx} cy={dy} r={74} fill={C.blue} opacity={0.18} />
-        <circle cx={dx} cy={dy} r={20 + p * 64} fill="none" stroke={C.blue} strokeWidth={4} opacity={(1 - p) * 0.8} />
-        <circle cx={dx} cy={dy} r={24} fill={C.white} />
-        <circle cx={dx} cy={dy} r={17} fill={C.blue} />
-      </g>
-      {/* coordinate card */}
-      <g opacity={s.coords} transform={`translate(0, ${(1 - s.coords) * 20})`}>
-        <rect x={24} y={650} width={352} height={150} rx={22} fill="#081330" stroke={C.cyan} strokeWidth={2} />
-        <text x={48} y={694} fontFamily={FONT} fontWeight={700} fontSize={19} letterSpacing="2" fill={C.cyan}>
-          YOUR POSITION
-        </text>
-        <text x={48} y={738} fontFamily={FONT} fontWeight={800} fontSize={31} fill={C.white}>
-          46.5577° N
-        </text>
-        <text x={48} y={778} fontFamily={FONT} fontWeight={800} fontSize={31} fill={C.white}>
-          7.9806° E
-        </text>
-      </g>
       {/* status bar */}
       <rect width={SW} height={92} fill="#060E26" opacity={0.92} />
       <text x={36} y={60} fontFamily={FONT} fontWeight={700} fontSize={28} fill={C.white}>
         9:41
       </text>
-      <g opacity={0.8 + 0.2 * s.noService}>
+      <g opacity={0.85}>
         <text
           x={238}
           y={60}
@@ -179,15 +203,15 @@ const MapScreen: React.FC<{s: MapState}> = ({s}) => {
           fontFamily={FONT}
           fontWeight={700}
           fontSize={22}
-          fill={s.noService > 0.5 ? C.orange : C.white}
+          fill={C.white}
         >
           No Service
         </text>
         {/* wifi glyph with slash */}
-        <g transform="translate(272,64)" stroke={s.noService > 0.5 ? C.orange : C.white} strokeWidth={4} fill="none" strokeLinecap="round">
+        <g transform="translate(272,64)" stroke={C.white} strokeWidth={4} fill="none" strokeLinecap="round">
           <path d="M -18 -18 Q 0 -32 18 -18" />
           <path d="M -11 -10 Q 0 -19 11 -10" />
-          <circle cx={0} cy={-2} r={2} fill={s.noService > 0.5 ? C.orange : C.white} />
+          <circle cx={0} cy={-2} r={2} fill={C.white} />
           <line x1={-20} y1={-30} x2={18} y2={4} />
         </g>
         <rect x={312} y={40} width={50} height={24} rx={6} fill="none" stroke={C.white} strokeWidth={2.5} />
@@ -198,8 +222,8 @@ const MapScreen: React.FC<{s: MapState}> = ({s}) => {
   );
 };
 
-/** Phone body + screen. Height = width * 2.08. Drawn at (x,y) center. */
-export const Phone: React.FC<{
+/** Vector phone (body + static screen). Only used by ArtExport to bake PNGs. */
+export const PhoneVector: React.FC<{
   x: number;
   y: number;
   w: number;
@@ -238,7 +262,7 @@ export const Phone: React.FC<{
             position: 'relative',
           }}
         >
-          <MapScreen s={s} />
+          <MapScreen s={s} mode="base" />
           {/* glass reflection */}
           <div
             style={{
@@ -340,7 +364,7 @@ export const Mountains: React.FC<{viewBox: string; width: number; height: number
       <rect x={38} y={-124} width={9} height={15} rx={2} fill={C.cyan} opacity={0.6 + 0.4 * phoneGlow} />
     </g>
     {/* subtle drifting mist band (transform only) */}
-    <rect x={-200} y={820} width={2400} height={120} fill={C.cyan} opacity={0.05} transform={`translate(${Math.sin(t * 0.3) * 30},0)`} />
+    <rect x={-200} y={820} width={2400} height={120} fill={C.cyan} opacity={0.05} />
   </svg>
 );
 
@@ -430,3 +454,31 @@ export const MiniPhone: React.FC<{x: number; y: number; s?: number; lit?: number
     <circle cx={0} cy={-36} r={5} fill={C.blue} />
   </g>
 );
+
+/** Runtime phone: pre-rasterized body/screen PNGs + a light live overlay. Height = w * 2.08. */
+export const Phone: React.FC<{
+  x: number;
+  y: number;
+  w: number;
+  s: MapState;
+  rot?: number;
+  opacity?: number;
+  glow?: number;
+}> = ({x, y, w, s, rot = 0, opacity = 1, glow = 0.6}) => {
+  if (opacity <= 0.002) return null;
+  const h = w * 2.08;
+  const bez = w * 0.045;
+  const img: React.CSSProperties = {position: 'absolute', left: 0, top: 0, width: w, height: h};
+  return (
+    <div style={{position: 'absolute', left: 0, top: 0, opacity}}>
+      <Glow x={x} y={y + w * 0.12} size={w * 3.2} color="blue" opacity={glow * 0.55} />
+      <div style={{position: 'absolute', left: x - w / 2, top: y - h / 2, width: w, height: h, transform: rot ? `rotate(${rot}deg)` : undefined}}>
+        {s.mapFail < 0.998 && <Img src={staticFile('art/phone_map.png')} style={img} />}
+        {s.mapFail > 0.002 && <Img src={staticFile('art/phone_offline.png')} style={{...img, opacity: s.mapFail}} />}
+        <div style={{position: 'absolute', left: bez, top: bez, width: w - 2 * bez, height: h - 2 * bez}}>
+          <MapScreen s={s} mode="overlay" />
+        </div>
+      </div>
+    </div>
+  );
+};
