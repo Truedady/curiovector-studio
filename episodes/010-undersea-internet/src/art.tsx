@@ -228,15 +228,25 @@ export const CloudShape: React.FC<G & {spread?: number}> = ({spread = 0, o = 1, 
   ];
   return (
     <g transform={tf(g)} opacity={o}>
-      {puffs.map(([x, y, r], i) => {
-        const dx = x * spread * 0.9 + (i % 2 ? 1 : -1) * spread * 40;
-        const dy = y * spread * 0.7 - spread * 60 * ((i % 3) - 1);
-        return (
-          <g key={i} transform={`translate(${x + dx} ${y + dy})`} opacity={1 - spread * 0.85}>
-            <circle r={r * (1 + spread * 0.3)} fill="#DDEBFF" fillOpacity={0.16} stroke={C.white} strokeOpacity={0.5} strokeWidth={3} />
-          </g>
-        );
-      })}
+      {[0, 1].map((layer) =>
+        puffs.map(([x, y, r], i) => {
+          const dx = x * spread * 0.9 + (i % 2 ? 1 : -1) * spread * 40;
+          const dy = y * spread * 0.7 - spread * 60 * ((i % 3) - 1);
+          const rr = r * (1 + spread * 0.3);
+          // layer 0 = outline silhouette, layer 1 = body (so overlaps merge into one cloud)
+          return (
+            <circle
+              key={`${layer}-${i}`}
+              cx={x + dx}
+              cy={y + dy}
+              r={layer === 0 ? rr + 5 : rr}
+              fill={layer === 0 ? '#CFE6FF' : i % 2 ? '#2F5A93' : '#2A5189'}
+              opacity={(1 - spread * 0.85) * (layer === 0 ? 0.9 : 1)}
+            />
+          );
+        }),
+      )}
+      <ellipse cx={-10} cy={-70} rx={150} ry={50} fill="#FFFFFF" opacity={0.08 * (1 - spread)} />
     </g>
   );
 };

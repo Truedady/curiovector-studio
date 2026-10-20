@@ -10,6 +10,9 @@ import {Fiber} from './scenes/S05Fiber';
 import {Anatomy} from './scenes/S06Anatomy';
 import {Network} from './scenes/S07Network';
 import {SatVsFiber} from './scenes/S08Satellites';
+import {Hazards} from './scenes/S09Hazards';
+import {Reroute} from './scenes/S10Reroute';
+import {Finale} from './scenes/S11Finale';
 
 // One timeline, two native layouts: `tall` switches every scene's art direction.
 export const Episode: React.FC<{tall: boolean}> = ({tall}) => {
@@ -41,6 +44,15 @@ export const Episode: React.FC<{tall: boolean}> = ({tall}) => {
         </Scene>
         <Scene a={SCENES.satellites[0]} b={SCENES.satellites[1]}>
           {(t) => <SatVsFiber t={t} />}
+        </Scene>
+        <Scene a={SCENES.hazards[0]} b={SCENES.hazards[1]}>
+          {(t) => <Hazards t={t} />}
+        </Scene>
+        <Scene a={SCENES.reroute[0]} b={SCENES.reroute[1]}>
+          {(t) => <Reroute t={t} />}
+        </Scene>
+        <Scene a={SCENES.finale[0]} b={SCENES.finale[1]} last>
+          {(t) => <Finale t={t} />}
         </Scene>
         <Audio src={staticFile('voiceover.mp3')} />
       </AbsoluteFill>
